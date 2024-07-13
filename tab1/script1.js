@@ -244,72 +244,94 @@ class App {
 
     saveColorData() {
         console.log("Saving color data:", this.colorData);
-
+    
         const grades = this.calculateGrades();
         const sortedGrades = Object.entries(grades).sort((a, b) => b[1] - a[1]);
-
+    
         // Fade out the question and color picker
         const questionContainer = document.querySelector('.question-container');
         const colorPicker = document.querySelector('.color-picker');
-        const blocksContainer = document.querySelector('.blocks-container');
         const saveButton = document.querySelector('.save-button');
-
+    
         questionContainer.style.transition = 'opacity 1s';
         colorPicker.style.transition = 'opacity 1s';
         saveButton.style.transition = 'opacity 1s';
-
+    
         questionContainer.style.opacity = 0;
         colorPicker.style.opacity = 0;
         saveButton.style.opacity = 0;
-
+    
         setTimeout(() => {
             questionContainer.style.display = 'none';
             colorPicker.style.display = 'none';
             saveButton.style.display = 'none';
     
-            // CORRECT THIS!!!
-            // Resize and move the pyramid
-            blocksContainer.style.transition = 'all 1s';
-            blocksContainer.style.position = 'fixed';
-            blocksContainer.style.top = '10px';
-            blocksContainer.style.right = '10px';
-            blocksContainer.style.transform = 'scale(0.5)'; // Adjust the scale as needed
-            blocksContainer.style.transformOrigin = 'top right'; // Ensure the scaling is from the top-right corner
-
-            // Show result card
-            const resultCard = document.createElement('div');
-            resultCard.classList.add('result-card');
-
+            // Create or update the result card
+            let resultCard = document.querySelector('.result-card');
+            if (!resultCard) {
+                resultCard = document.createElement('div');
+                resultCard.classList.add('result-card');
+                document.body.appendChild(resultCard);
+            } else {
+                resultCard.innerHTML = ''; // Clear previous content if result card exists
+            }
+    
             // Get the meanings for the top 3 colors
             const topColorsInfo = sortedGrades.slice(0, 3).map(([color, grade]) => {
                 const colorInfo = COLOR_MEANINGS[color];
                 return `<div><strong>${color}</strong>: ${grade.toFixed(2)}%<br>${colorInfo}</div>`;
             }).join('<br>');
-
+    
             resultCard.innerHTML = `
-                <h2>Color Data</h2>
+                <h2>Color Result</h2>
                 <pre id="color-data">${topColorsInfo}</pre>
             `;
-            document.body.appendChild(resultCard);
-            
+    
+            // Show result card
+            resultCard.style.opacity = 1;
+    
+            // Resize and move the pyramid (blocks container)
+            const blocksContainer = document.querySelector('.blocks-container');
+            blocksContainer.style.transition = 'all 1s';
+            blocksContainer.style.position = 'fixed';
+            blocksContainer.style.top = '10px'; // Position at the bottom
+            blocksContainer.style.right = '10px'; // Position at the right
+            blocksContainer.style.transform = 'scale(0.5)'; // Adjust the scale as needed
+            blocksContainer.style.transformOrigin = 'top right'; // Ensure scaling from bottom-right corner
+    
+            // Show "More Info" button
+            const moreInfoButton = document.createElement('button');
+            moreInfoButton.id = 'more-info-button';
+            moreInfoButton.classList.add('more-info-button');
+            moreInfoButton.textContent = 'More Info';
+            moreInfoButton.style.position = 'fixed';
+            moreInfoButton.style.bottom = '20px'; // Adjust bottom position as needed
+            moreInfoButton.style.right = '20px'; // Adjust right position as needed
+            moreInfoButton.addEventListener('click', () => {
+                // Navigate to colorcards.html when the button is clicked
+                window.location.href = 'colorcards.html';
+            });
+            document.body.appendChild(moreInfoButton);
+    
             setTimeout(() => {
-                resultCard.style.opacity = 1;
+                moreInfoButton.classList.add('show');
             }, 100); // Start fade in after a short delay
+    
         }, 1000); // Wait for the fade out transition to complete
     
-
         // Update COLORS array with top 3 ranking colors
         TOPCOLORS = sortedGrades.slice(0, 3).map(([color]) => {
             const colorObj = COLOR_PICKER.find(c => c.name === color);
             return colorObj ? colorObj.rgb : { r: 0, g: 0, b: 0 }; // Fallback to black if color not found
         });
-
+    
         // Update the global COLORS array with RGB values
         COLORS = TOPCOLORS;
-
+    
         // Recreate particles with updated COLORS
         this.createParticles();
     }
+    
 }
 
 window.onload = () => { // start application
