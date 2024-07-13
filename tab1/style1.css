@@ -41,8 +41,8 @@ canvas{
     display: grid;
     grid-template-columns: repeat(5, 50px);
     grid-gap: 10px;
-    opacity: 0;
-    transition: opacity 2s ease-in;
+    transition: all 1s; /* Add transition for the transform property */
+    transform-origin: top right; /* Ensure the scaling is from the top-right corner */
 }
 
 .block {
@@ -79,8 +79,9 @@ canvas{
 
 .save-button {
     position: absolute;
-    top: 80%;
-    left: 50%;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
     transform: translateX(-50%);
     padding: 10px 20px;
     font-size: 16px;
@@ -114,4 +115,33 @@ canvas{
     right: 10px;
     cursor: pointer;
     font-size: 20px;
+}
+
+.result-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%; /* Set a maximum width to ensure it doesn't overflow */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transition: opacity 1s;
+    text-align: center;
+    overflow: auto; /* Enable scrolling if content exceeds container */
+}
+
+.result-card h2 {
+    margin-top: 0;
+}
+
+/* Ensure preformatted text wraps correctly */
+.result-card pre {
+    white-space: pre-wrap;
+}
+
+.question-container, .color-picker, .save-button {
+    transition: opacity 1s; /* Ensure the transition for opacity is smooth */
 }

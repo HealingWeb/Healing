@@ -13,6 +13,10 @@ const COLOR_PICKER = [
     { name: 'black', rgb: { r: 50, g: 50, b: 50 } }
 ];
 
+let TOPCOLORS = [
+    { r: 255, g: 255, b: 255 } // initial color = white
+];
+
 let COLORS = [ // colors of particles
     { r: 224, g: 224, b: 224 }, // almost white
     { r: 44, g: 180, b: 250 }, // light blue
@@ -23,6 +27,32 @@ let COLORS = [ // colors of particles
     // { r: 44, g: 209, b: 252 }, //cyan
     //{ r: 54, g: 233, b: 84 }, //green
 ];
+
+const COLOR_MEANINGS = {
+    'red': '충동\n충동적인 감정을 일으키는 색으로 사용량이 많은 경우는 충동적이고 외향적인 성향을 사용량이 적은 경우는 감정을 통제하고 있음을 나타낸다.',
+    'orange': '외향적 정서\n외향적인 색으로 정서적 욕구가 강하고 그것을 밖으로 쉽게 표현하는 사람이 많이 사용. 사용량이 적은 사람은 감정을 부정하거나 억압하고 있음을 나타낸다.',
+    'yellow': '정서적 안정성\n각성효과는 빨강인 주황만큼 강하지는 않아 사용량이 많은 사람은 평온하고 안정되어 있으며 감정을 적절하게 표현할 수있고 사용량이 적은 사람은 충동을 합리적으로 표현하는 것이 서투르다.',
+    'green': '감수성\n정서의 조절 및 감수성의 지표로 사용량이 많은 경우는 감수성이 풍부함을 나타내지만 극단적으로 많은 경우는 정서적 자극에 압도당하고 있음을 나타낸다. 사용량이 적은 경우는 감정이 퇴조된 단조로운 사람을 나타낸다.',
+    'blue': '감정/정서적 통제성\n감정통제의 지표로 사용량이 많은 경우는 감정을 통제하고 있고 극단적으로 사용량이 많은 경우는 의기소침, 강박관념에 사로잡혀 있음을 나타낸다. 통제기능이 약해지만 사용량이 감소한다.',
+    'purple': '정서적 성숙도 / 불안감\n불안, 긴장의 지표로 사용량이 많은 경우는 적응불량, 미성숙을 나타내고 극단저긍로 많은 경우는 통합실조증의 징후로 여겨진다. 사용량이 적은 경우는 억울경향을 나타낸다.',
+    'brown': '정서적 강도\n사용량이 많은 사람은 완고하고 반항적이며 유치한 충동을 갖고 극단적으로 많은 경우는 정신박약이 의심된다. 사용량이 적은 경우는 무력형인 사람을 나타낸다.',
+    'white': '사회적 적응성\n사용량이 많은 것은 현실과의 접촉의 결여, 공허, 통제불량의 지표가 되고 적은 것은 현실 적응을 잘함을 나타낸다.',
+    'gray': '사회적 교류성\n중성적인 색으로 사용량이 많은 사람은 억압과 거절의 경향을 지닌다. 사용량이 적은 경우는 억압의 메커니즘이 기능하지 않고 개방적인 사람을 나타낸다.',
+    'black': '충동의 통제성\n사용량이 많은 경우는 억제적이고 무력감이나 부적응감을 느끼며 사용량이 적은 경우는 강한 억제와는 관계가 없는 것으로 진단된다.'
+};
+
+const MOST_COLOR_MEANINGS = {
+    'red': '충동\n충동적인 감정을 일으키는 색으로 사용량이 많은 경우는 충동적이고 외향적인 성향을 나타낸다.',
+    'orange': '외향적 정서\n외향적인 색으로 정서적 욕구가 강하고 그것을 밖으로 쉽게 표현하는 사람이 많이 사용한다.',
+    'yellow': '정서적 안정성\n각성효과는 빨강인 주황만큼 강하지는 않아 사용량이 많은 사람은 평온하고 안정되어 있으며 감정을 적절하게 표현할 수 있음을 나타낸다.',
+    'green': '감수성\n정서의 조절 및 감수성의 지표로 사용량이 많은 경우는 감수성이 풍부함을 나타내지만 극단적으로 많은 경우는 정서적 자극에 압도당하고 있음을 나타낸다.',
+    'blue': '감정/정서적 통제성\n감정통제의 지표로 사용량이 많은 경우는 감정을 통제하고 있고 극단적으로 사용량이 많은 경우는 의기소침, 강박관념에 사로잡혀 있음을 나타낸다.',
+    'purple': '정서적 성숙도 / 불안감\n불안, 긴장의 지표로 사용량이 많은 경우는 적응불량, 미성숙을 나타내고 극단저긍로 많은 경우는 통합실조증의 징후로 여겨진다',
+    'brown': '정서적 강도\n사용량이 많은 사람은 완고하고 반항적이며 유치한 충동을 갖고 극단적으로 많은 경우는 정신박약이 의심된다.',
+    'white': '사회적 적응성\n사용량이 많은 것은 현실과의 접촉의 결여, 공허, 통제불량의 지표가 된다.',
+    'gray': '사회적 교류성\n중성적인 색으로 사용량이 많은 사람은 억압과 거절의 경향을 지닌다.',
+    'black': '충동의 통제성\n사용량이 많은 경우는 억제적이고 무력감이나 부적응감을 느끼는 것으로 진단된다.'
+};
 
 class App {
     constructor() {
@@ -218,24 +248,64 @@ class App {
         const grades = this.calculateGrades();
         const sortedGrades = Object.entries(grades).sort((a, b) => b[1] - a[1]);
 
-        const popup = document.getElementById('popup');
-        const colorDataElement = document.getElementById('color-data');
-        colorDataElement.textContent = sortedGrades.map(([color, grade]) => `${color}: ${grade.toFixed(2)}%`).join('\n');
-        popup.style.display = 'flex';
+        // Fade out the question and color picker
+        const questionContainer = document.querySelector('.question-container');
+        const colorPicker = document.querySelector('.color-picker');
+        const blocksContainer = document.querySelector('.blocks-container');
+        const saveButton = document.querySelector('.save-button');
 
-        const closeButton = document.getElementById('close-button');
-        closeButton.addEventListener('click', () => {
-            popup.style.display = 'none';
-        });
+        questionContainer.style.transition = 'opacity 1s';
+        colorPicker.style.transition = 'opacity 1s';
+        saveButton.style.transition = 'opacity 1s';
+
+        questionContainer.style.opacity = 0;
+        colorPicker.style.opacity = 0;
+        saveButton.style.opacity = 0;
+
+        setTimeout(() => {
+            questionContainer.style.display = 'none';
+            colorPicker.style.display = 'none';
+            saveButton.style.display = 'none';
+    
+            // CORRECT THIS!!!
+            // Resize and move the pyramid
+            blocksContainer.style.transition = 'all 1s';
+            blocksContainer.style.position = 'fixed';
+            blocksContainer.style.top = '10px';
+            blocksContainer.style.right = '10px';
+            blocksContainer.style.transform = 'scale(0.5)'; // Adjust the scale as needed
+            blocksContainer.style.transformOrigin = 'top right'; // Ensure the scaling is from the top-right corner
+
+            // Show result card
+            const resultCard = document.createElement('div');
+            resultCard.classList.add('result-card');
+
+            // Get the meanings for the top 3 colors
+            const topColorsInfo = sortedGrades.slice(0, 3).map(([color, grade]) => {
+                const colorInfo = COLOR_MEANINGS[color];
+                return `<div><strong>${color}</strong>: ${grade.toFixed(2)}%<br>${colorInfo}</div>`;
+            }).join('<br>');
+
+            resultCard.innerHTML = `
+                <h2>Color Data</h2>
+                <pre id="color-data">${topColorsInfo}</pre>
+            `;
+            document.body.appendChild(resultCard);
+            
+            setTimeout(() => {
+                resultCard.style.opacity = 1;
+            }, 100); // Start fade in after a short delay
+        }, 1000); // Wait for the fade out transition to complete
+    
 
         // Update COLORS array with top 3 ranking colors
-        const topColors = sortedGrades.slice(0, 3).map(([color]) => {
+        TOPCOLORS = sortedGrades.slice(0, 3).map(([color]) => {
             const colorObj = COLOR_PICKER.find(c => c.name === color);
             return colorObj ? colorObj.rgb : { r: 0, g: 0, b: 0 }; // Fallback to black if color not found
         });
 
         // Update the global COLORS array with RGB values
-        COLORS = topColors;
+        COLORS = TOPCOLORS;
 
         // Recreate particles with updated COLORS
         this.createParticles();
