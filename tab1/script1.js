@@ -19,7 +19,7 @@ let TOPCOLORS = [
 
 let COLORS = [ // colors of particles
     { r: 224, g: 224, b: 224 }, // almost white
-    { r: 44, g: 180, b: 250 }, // light blue
+    { r: 30, g: 180, b: 220 }, // light blue
     { r: 180, g: 180, b: 180 }, // gray
     // { r: 45, g: 74, b: 227 }, //blue
     // { r: 250, g: 255, b: 89 }, //yellow
