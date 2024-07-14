@@ -48,7 +48,8 @@ canvas{
 .block {
     width: 50px;
     height: 50px;
-    background-color: #333;
+    background-color: transparent;
+    border: 2px solid #333; /* Adding a 1px solid border with color #333 */
     opacity: 0;
     animation: fadeInBlock 1s ease-in forwards;
 }
