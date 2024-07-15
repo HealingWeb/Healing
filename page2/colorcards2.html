@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>스와이프 갤러리</title>
+	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+	<link rel="stylesheet" href="colorcards2.css">	
+	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+</head>
+<body>	
+
+	<div class="wrap">
+		<h1>비 결과 <span>해석방법 ... 대충 어쩌구</span></h1>
+
+		<ul class="auto">
+			<li class="btnStart"><i class="fas fa-play"></i></li>
+			<li class="btnStop"><i class="fas fa-pause"></i></li>
+		</ul>
+
+<div class="swiper-wrapper">
+	<div class="swiper-slide red">
+		<div class="inner">
+			<div class="con">
+				<h2>나의 모습</h2>
+				<p>그림 속 나의 모습은 내 정서와 상태를 나타냅니다<br>
+				나의 크기가 클수록 외향적이고, 더 강한 자아상을 지니고 있다는 걸 보여줍니다.<br>
+				또한 내가 바라보고 있는 방향에 따라 내가 스트레스를 어떻게 받아들이고 있는지 보여줍니다.</p>
+			</div>
+		</div>
+	</div>
+	<div class="swiper-slide orange">
+		<div class="inner">
+			<div class="con">
+				<h2>먹구름과 비의 양</h2>
+				<p>먹구름과 비 내리는 모습은 내가 겪고 있는 스트레스의 강도를 보여줍니다.<br>
+				하늘에 낀 구름의 양과 내리는 비의 양이 클수록 높은 스트레스를 받고 있다는 것을 보여줍니다.</p>
+			</div>
+		</div>
+	</div>
+	<div class="swiper-slide yellow">
+		<div class="inner">
+			<div class="con">
+				<h2>비를 대처하는 나의 모습</h2>
+				<p>비를 대하는 나의 모습은 현실 속 내가 스트레스를 대처하는 능력을 보여줍니다.<br>
+				우산이나 장화 등으로 비를 피하는 모습은 스트레스를 대처할 적절한 방안이 있다는 것을 보여줍니다.<br>
+				다만 나무나 지붕과 같이 자신보다 월등히 큰 사물로 비를 피하는 모습은 <br>
+				스트레스 대처를 위해 지나치게 큰 에너지를 소모하고 있을 가능성을 지닙니다.</p>
+			</div>
+		</div>
+	</div>
+</div>
+	</div>
+
+	<script>
+		const swiper = new Swiper('.wrap',{	
+			direction: "horizontal",
+			loop: true,						
+			pagination: {
+				el: '.swiper-pagination',
+				type: 'fraction'
+			},	
+			navigation : {				
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',			
+			},
+			spaceBetween: 0,
+			slidesPerView: "auto",
+			grabCursor: true,
+			centeredSlides :true,
+			speed:1000,
+			effect:"coverflow",	
+			coverflowEffect: {
+				rotate: 50,
+				stretch: -100,
+				depth: 400,
+				modifier: 1,
+				slideShadows: false,
+			},
+			autoplay: {
+				delay:1000,		
+				disableOnInteraction : true
+			}	
+		});
+
+		// .btnStart 요소를 찾아서 btnStart에 저장
+		const btnStart = document.querySelector(".btnStart");
+		// .btnStop 요소를 찾아서 btnStop에 저장
+		const btnStop = document.querySelector(".btnStop");
+
+		//btnStart버튼을 클릭시 자동롤링 시작
+		btnStart.addEventListener("click",()=>{
+			swiper.autoplay.start();
+		});
+
+		//btnStart버튼을 클릭시 자동롤링 정지
+		btnStop.addEventListener("click",()=>{
+			swiper.autoplay.stop();
+		});
+	</script>	
+</body>
+</html>

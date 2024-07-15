@@ -309,7 +309,7 @@ class App {
             moreInfoButton.style.right = '20px'; // Adjust right position as needed
             moreInfoButton.addEventListener('click', () => {
                 // Navigate to colorcards.html when the button is clicked
-                window.location.href = 'colorcards.html';
+                window.location.href = 'colorcards1.html';
             });
             document.body.appendChild(moreInfoButton);
     
