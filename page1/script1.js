@@ -180,20 +180,6 @@ class App {
                 } else {
                     console.error('Cannot drop color here. Please fill the previous blocks first.');
                 }
-
-                /*block.style.backgroundColor = color;
-
-                // Calculate the block index based on its position in the grid
-                const blockIndex = Array.from(blocks).indexOf(block);
-                const row = Math.floor(blockIndex / 5); // Assuming 5 columns per row
-                const col = blockIndex % 5;
-
-                // Calculate the final index based on the grid layout
-                const finalIndex = row * 5 + col;
-
-                // Store the color data for the block
-                this.colorData[finalIndex] = color;
-                console.log(this.colorData); // Log to see the recorded data */
             });
         });
     }

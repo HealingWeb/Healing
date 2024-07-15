@@ -66,17 +66,18 @@ canvas{
     display: grid;
     grid-template-columns: repeat(5, 50px);
     grid-gap: 10px;
-    transition: all 1s; /* Add transition for the transform property */
-    transform-origin: top right; /* Ensure the scaling is from the top-right corner */
+    transition: all 1s;
+    transform-origin: top right;
 }
 
 .block {
     width: 50px;
     height: 50px;
-    background-color: transparent;
-    border: 2px solid #333; /* Adding a 1px solid border with color #333 */
+    background-color: rgba(255, 255, 255, 0.3);
+    border: transparent;
     opacity: 0;
     animation: fadeInBlock 1s ease-in forwards;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 @keyframes fadeInBlock {
@@ -87,34 +88,54 @@ canvas{
 
 .color-picker {
     position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+    top: 50%;
+    left: 5%;
+    transform: translateY(-50%);
     display: flex;
+    flex-direction: column;
     gap: 10px;
-    opacity: 0; /* fading effect */
+    opacity: 0;
     transition: opacity 2s ease-in;
 }
+
 
 .color {
     width: 50px;
     height: 50px;
     cursor: pointer;
-    border: 1px solid #000;
+    border: transparent;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.save-button {
-    position: absolute;
+.color:hover {
+    transform: scale(1.2);
+}
+
+.arrow-button {
+    position: fixed;
     bottom: 20px;
-    right: 20px;
-    padding: 10px 20px;
-    transform: translateX(-50%);
-    padding: 10px 20px;
-    font-family: "BCcardB";
-    font-size: 16px;
+    right: 60px;
+    width: 80px;
+    height: 120px;
+    color: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+    z-index: 101; /* Ensure it's above other elements */
     opacity: 0;
-    transition: opacity 2s ease-in;
+    transition: opacity 1s ease-in;
+    transform: scaleX(-1); /* Flip the button vertically */
+}
+
+.arrow-button.show {
+    opacity: 1;
+}
+
+.arrow-button:hover {
+    transform: scaleX(-1.2);
 }
 
 .popup {
@@ -159,6 +180,7 @@ canvas{
     text-align: center;
     z-index: 100;
     overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .result-card h2 {
@@ -180,6 +202,7 @@ canvas{
     vertical-align: middle;
     margin-right: 10px;
     border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .result-card strong {
@@ -207,15 +230,20 @@ canvas{
 }
 
 .more-info-button {
-    padding: 10px 20px;
-    background-color: #007BFF;
-    color: white;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    background-image: url('img/moreResult.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: transparent;
     border: none;
-    border-radius: 5px;
+    padding: 0;
     cursor: pointer;
-    font-family: "BCcardB";
-    font-size: 16px;
-    opacity: 0;
+    transition: transform 0.3s;
+    color: transparent;
     transition: opacity 0.5s ease;
 }
 
@@ -224,7 +252,7 @@ canvas{
 }
 
 .more-info-button:hover {
-    background-color: #0056b3;
+    transform: scale(1.2);
 }
 
 
@@ -253,28 +281,4 @@ canvas{
 
 .fixed-button:hover {
     background-color: #0056b3;
-}
-
-.arrow-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px; /* Adjust positioning as needed */
-    width: 80px;
-    height: 120px;
-    color: transparent;
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    z-index: 101; /* Ensure it's above other elements */
-    opacity: 0;
-    transition: opacity 1s ease-in;
-    transform: scaleX(-1); /* Flip the button vertically */
-}
-
-
-.arrow-button.show {
-    opacity: 1;
 }
