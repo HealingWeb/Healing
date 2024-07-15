@@ -56,6 +56,9 @@ function showQuestion(index) {
     questions[index].choices.forEach((choice, i) => {
         const button = document.createElement('button');
         button.classList.add('choice-button');
+        if (index === 4) { // 5번째 문제인 경우
+            button.classList.add('large');
+        }
         button.onclick = () => selectAnswer(index, i);
 
         const img = document.createElement('img');
@@ -74,6 +77,7 @@ function showQuestion(index) {
     // Disable back button on first question
     document.getElementById('back-button').disabled = index === 0;
 }
+
 
 function selectAnswer(questionIndex, choiceIndex) {
     answers[questionIndex] = choiceIndex;
@@ -110,15 +114,15 @@ function showResults() {
 function getPairResult(answer3, answer4) {
     const pair = `${answer3 + 1}-${answer4 + 1}`;
     const pairResults = {
-        "1-1": "아아아",
-        "1-2": "아하하",
-        "2-1": "아하하",
-        "1-3": "아하하",
-        "2-2": "아하하",
-        "3-1": "아하하",
-        "2-3": "하하하",
-        "3-2": "하하하",
-        "3-3": "하하하"
+        "1-1": "스트레스 강도가 비교적 낮은 편입니다.",
+        "1-2": "스트레스 강도가 비교적 적당한 편입니다.",
+        "2-1": "스트레스 강도가 비교적 적당한 편입니다.",
+        "1-3": "스트레스 강도가 비교적 적당한 편입니다.",
+        "2-2": "스트레스 강도가 비교적 적당한 편입니다.",
+        "3-1": "스트레스 강도가 비교적 적당한 편입니다.",
+        "2-3": "스트레스 강도가 비교적 높은 편입니다.",
+        "3-2": "스트레스 강도가 비교적 높은 편입니다.",
+        "3-3": "스트레스 강도가 비교적 높은 편입니다."
     };
     return pairResults[pair] || "No matching result";
 }
@@ -146,20 +150,20 @@ document.addEventListener('click', function(e) {
     createRipple(e.clientX, e.clientY);
 });
 
-// Function to create ripple effect
 function createRipple(x, y) {
     const rippleContainer = document.body; // Use body for ripple effect
 
+    // Generate the rain line
     const rainLine = document.createElement('div');
     rainLine.className = 'rain-line';
     rainLine.style.left = `${x}px`; // Center line
-    rainLine.style.top = `${y - 20}px`; // Position line above the ripple
+    rainLine.style.top = `0px`; // Start from the top of the viewport
+    rainLine.style.height = `${y}px`; // Set the height to reach the ripple center
     rippleContainer.appendChild(rainLine);
 
     rainLine.addEventListener('animationend', () => {
         rainLine.remove();
     });
-
 
     // Generate ripple effects
     for (let i = 0; i < 3; i++) {
@@ -206,8 +210,8 @@ function generateRandomEffects() {
     const height = window.innerHeight;
     
     setInterval(() => {
-        const x = Math.random() * width
-        const y = height - Math.random() * height * (2/3)
+        const x = Math.random() * width;
+        const y = height - Math.random() * height * (2/3);
         createRipple(x, y);
     }, 800); // Adjust interval time (in milliseconds) as needed
 }
