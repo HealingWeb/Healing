@@ -141,11 +141,25 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Add ripple effect on click
+// Add ripple effect on click
 document.addEventListener('click', function(e) {
+    createRipple(e.clientX, e.clientY);
+});
+
+// Function to create ripple effect
+function createRipple(x, y) {
     const rippleContainer = document.body; // Use body for ripple effect
-    const rect = rippleContainer.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+
+    const rainLine = document.createElement('div');
+    rainLine.className = 'rain-line';
+    rainLine.style.left = `${x}px`; // Center line
+    rainLine.style.top = `${y - 20}px`; // Position line above the ripple
+    rippleContainer.appendChild(rainLine);
+
+    rainLine.addEventListener('animationend', () => {
+        rainLine.remove();
+    });
+
 
     // Generate ripple effects
     for (let i = 0; i < 3; i++) {
@@ -184,4 +198,21 @@ document.addEventListener('click', function(e) {
             bubble.remove();
         });
     }
-});
+}
+
+// Function to generate random ripple and bubble effects
+function generateRandomEffects() {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    
+    setInterval(() => {
+        const x = Math.random() * width
+        const y = height - Math.random() * height * (2/3)
+        createRipple(x, y);
+    }, 800); // Adjust interval time (in milliseconds) as needed
+}
+
+// Start generating random effects after the window has loaded
+window.onload = () => {
+    generateRandomEffects();
+};
