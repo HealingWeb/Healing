@@ -135,10 +135,22 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('results-container')) {
         const resultsContainer = document.getElementById('results-container');
         const results = JSON.parse(localStorage.getItem('results')) || [];
-        resultsContainer.innerHTML = results.map(result => `<p>${result}</p>`).join('');
+        const info = results.map(result => `
+            <div style="margin-bottom: 10px;">
+                <strong style="font-family: 'BCcardB'; font-size: 20px;">
+                    ${result}
+                </strong>
+            </div>
+        `).join('');
+
+        resultsContainer.innerHTML = `
+            <h2 style="font-family: 'BCcardB'; text-align: center; font-size: 30px;">PITR 분석 결과지</h2>
+            <div id="result-data">${info}</div>
+        `;
+        resultsContainer.style.opacity = '1';
 
         // Show the 'See More Results' button
-        document.getElementById('see-more-results-button').style.display = 'block';
+        //document.getElementById('see-more-results-button').style.display = 'block';
     } else {
         showQuestion(currentQuestionIndex);
     }
