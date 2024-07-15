@@ -163,9 +163,34 @@ canvas{
 
 .result-card h2 {
     font-family: "BCcardB";
-    font-size: 24px;
-    margin-bottom: 10px;
+    font-size: 30px;
+    margin-top: 20px;
+    margin-bottom: 40px;
     color: #333;
+}
+
+.result-card div {
+    margin-bottom: 10px;
+}
+
+.result-card .color-box {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+.result-card strong {
+    color: #333;
+    font-family: 'AukimExtraBold';
+    font-size: 18px;
+}
+
+.result-card span {
+    font-size: 20px;
+    font-weight: bold;
 }
 
 #color-data {
@@ -228,4 +253,28 @@ canvas{
 
 .fixed-button:hover {
     background-color: #0056b3;
+}
+
+.arrow-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px; /* Adjust positioning as needed */
+    width: 80px;
+    height: 120px;
+    color: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    z-index: 101; /* Ensure it's above other elements */
+    opacity: 0;
+    transition: opacity 1s ease-in;
+    transform: scaleX(-1); /* Flip the button vertically */
+}
+
+
+.arrow-button.show {
+    opacity: 1;
 }
