@@ -142,21 +142,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Add ripple effect on click
 document.addEventListener('click', function(e) {
-    const rippleContainer = document.getElementById('ripple-container');
+    const rippleContainer = document.body; // Use body for ripple effect
+    const rect = rippleContainer.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
 
-    // Generate multiple ripples with different sizes and delays
+    // Generate ripple effects
     for (let i = 0; i < 3; i++) {
         const ripple = document.createElement('div');
         ripple.className = 'ripple';
-        ripple.style.left = `${e.clientX - 10}px`; // Adjust for ripple center
-        ripple.style.top = `${e.clientY - 10}px`; // Adjust for ripple center
-        ripple.style.animationDelay = `${i * 0.1}s`; // Delay each ripple slightly
-        ripple.style.width = `${20 + i * 10}px`; // Increase size of each ripple
-        ripple.style.height = `${20 + i * 10}px`; // Increase size of each ripple
+        ripple.style.left = `${x}px`; // Center ripple
+        ripple.style.top = `${y}px`; // Center ripple
+        ripple.style.width = `${50 * (i + 0.5)}px`; // Increase size of each ripple
+        ripple.style.height = `${25 * (i + 0.5)}px`; // Make the ripple an oval shape
+        ripple.style.marginLeft = `-${25 * (i + 0.5)}px`; // Adjust to center the ripple horizontally
+        ripple.style.marginTop = `-${12 * (i + 0.5)}px`; // Adjust to center the ripple vertically
+        ripple.style.animationDelay = `${i * 0.3}s`; // Delay each ripple slightly
         rippleContainer.appendChild(ripple);
 
         ripple.addEventListener('animationend', () => {
             ripple.remove();
+        });
+    }
+
+    // Generate bubble effects
+    for (let i = 0; i < 2; i++) {
+        const bubble = document.createElement('div');
+        bubble.className = 'bubble';
+        bubble.style.left = `${x}px`;
+        bubble.style.top = `${y}px`;
+        bubble.style.animation = `bubble-effect-${i} 1.5s ease-in`;
+        bubble.style.animationDelay = `${i * 0.5}s`;
+        bubble.style.width = '5px';
+        bubble.style.height = '5px';
+        bubble.style.marginLeft = '-7px'; // Adjust to center the bubble horizontally
+        bubble.style.marginTop = '-7px'; // Adjust to center the bubble vertically
+        bubble.style.borderRadius = '50%';
+        rippleContainer.appendChild(bubble);
+
+        bubble.addEventListener('animationend', () => {
+            bubble.remove();
         });
     }
 });
