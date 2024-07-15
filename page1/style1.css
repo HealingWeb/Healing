@@ -21,6 +21,31 @@ canvas{
     height: 100%;
 }
 
+@font-face {
+    font-family: 'AukimExtraBold';
+    src: url('fonts/AukimExtraBold.otf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'AukimLight';
+    src: url('fonts/AukimLight.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'BCcardL';
+    src: url('fonts/BCcardL.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'BCcardB';
+    src: url('fonts/BCcardL.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
 .question-container {
     position: absolute;
     top: 50%;
@@ -29,7 +54,7 @@ canvas{
     text-align: center;
     opacity: 0;
     transition: opacity 2s ease-in;
-    font-family: Arial, sans-serif;
+    font-family: "BCcardB", sans-serif;
     color: #000; /* Set to black for visibility against white background */
 }
 
@@ -85,6 +110,7 @@ canvas{
     padding: 10px 20px;
     transform: translateX(-50%);
     padding: 10px 20px;
+    font-family: "BCcardB";
     font-size: 16px;
     cursor: pointer;
     opacity: 0;
@@ -136,12 +162,14 @@ canvas{
 }
 
 .result-card h2 {
+    font-family: "BCcardB";
     font-size: 24px;
     margin-bottom: 10px;
     color: #333;
 }
 
 #color-data {
+    font-family: "BCcardL";
     font-size: 16px;
     line-height: 1.6;
     overflow-y: auto;
@@ -160,6 +188,7 @@ canvas{
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-family: "BCcardB";
     font-size: 16px;
     opacity: 0;
     transition: opacity 0.5s ease;
@@ -189,6 +218,7 @@ canvas{
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    font-family: "BCcardB";
     display: none; /* Initially hidden */
 }
 
