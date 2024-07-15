@@ -1,15 +1,18 @@
-// Interactive background animation using HTML5 Canvas API
-
 const canvas = document.getElementById('background');
 const ctx = canvas.getContext('2d');
+console.log(canvas, ctx); // to check if canvas and ctx are valid
 
 let particlesArray;
+const mouse = {
+    x: null,
+    y: null,
+    radius: 100
+};
 
 // Set canvas size
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-// Particle class definition
 class Particle {
     constructor(x, y, size, color, speedX, speedY) {
         this.x = x;
@@ -24,7 +27,10 @@ class Particle {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fillStyle = this.color;
+        ctx.shadowBlur = 15; // blur
+        ctx.shadowColor = this.color;
         ctx.fill();
+        ctx.shadowBlur = 0;
     }
 
     update() {
@@ -37,6 +43,48 @@ class Particle {
             this.speedY = -this.speedY;
         }
         this.draw();
+    }
+
+    applyForce(forceX, forceY) {
+        this.speedX += forceX;
+        this.speedY += forceY;
+    }
+}
+
+// Draw lines between particles
+function connectParticles() {
+    const maxDistance = 100;
+    for (let a = 0; a < particlesArray.length; a++) {
+        for (let b = a + 1; b < particlesArray.length; b++) {
+            const dx = particlesArray[a].x - particlesArray[b].x;
+            const dy = particlesArray[a].y - particlesArray[b].y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < maxDistance) {
+                ctx.beginPath();
+                ctx.strokeStyle = 'rgba(255, 255, 255,' + (1 - distance / maxDistance) + ')';
+                ctx.lineWidth = 0.5;
+                ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                ctx.stroke();
+                ctx.closePath();
+            }
+        }
+
+        // Draw lines to mouse position
+        const mouseDx = particlesArray[a].x - mouse.x;
+        const mouseDy = particlesArray[a].y - mouse.y;
+        const mouseDistance = Math.sqrt(mouseDx * mouseDx + mouseDy * mouseDy);
+
+        if (mouseDistance < maxDistance) {
+            ctx.beginPath();
+            ctx.strokeStyle = 'rgba(255, 255, 255,' + (1 - mouseDistance / maxDistance) + ')';
+            ctx.lineWidth = 0.5;
+            ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+            ctx.lineTo(mouse.x, mouse.y);
+            ctx.stroke();
+            ctx.closePath();
+        }
     }
 }
 
@@ -55,6 +103,8 @@ function init() {
 
         particlesArray.push(new Particle(x, y, size, color, speedX, speedY));
     }
+
+    console.log(particlesArray); // to check if particlesArray is populated
 }
 
 // Animation loop
@@ -65,6 +115,8 @@ function animate() {
     particlesArray.forEach(particle => {
         particle.update();
     });
+
+    connectParticles();
 }
 
 // Initialize and start animation
@@ -76,6 +128,30 @@ window.addEventListener('resize', () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     init();
+});
+
+// Handle click event
+canvas.addEventListener('click', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    const mouseX = event.clientX - rect.left;
+    const mouseY = event.clientY - rect.top;
+
+    particlesArray.forEach(particle => {
+        const dx = particle.x - mouseX;
+        const dy = particle.y - mouseY;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        const forceRadius = 100; // Radius within which particles will be affected
+        const forceStrength = 0.05; // Strength of the force applied to particles
+
+        if (distance < forceRadius) {
+            const forceDirectionX = dx / distance;
+            const forceDirectionY = dy / distance;
+            const force = (forceRadius - distance) / forceRadius * forceStrength;
+
+            particle.applyForce(forceDirectionX * force, forceDirectionY * force);
+        }
+    });
 });
 
 // Scroll animation to the next section
