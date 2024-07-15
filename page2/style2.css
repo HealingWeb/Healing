@@ -10,22 +10,37 @@ body {
     overflow: hidden;
 }
 
-/* .container {
-    position: relative; /* Ensure container is positioned relative for absolute positioning inside */
-    /* background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: center; */
-/* }  */
-
-/* .question-container {
-    margin-bottom: 20px;
-} */
+@font-face {
+    font-family: 'AukimExtraBold';
+    src: url('fonts/AukimExtraBold.otf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'AukimLight';
+    src: url('fonts/AukimLight.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'BCcardL';
+    src: url('fonts/BCcardL.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'BCcardB';
+    src: url('fonts/BCcardL.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
 
 .question {
-    font-size: 1.5em;
-    margin-bottom: 50px;
+    position: inherit;
+    font-family: 'BCcardL', sans-serif;
+    font-size: 2em;
+    color: white;
+    position: fixed;
 }
 
 .choices {
@@ -36,17 +51,25 @@ body {
 }
 
 .choice-button {
-    background-color: transparent; /* Make background transparent */
-    border: none; /* Remove border */
-    padding: 0; /* Remove padding */
-    margin: 40px 120px;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 40px 80px;
     cursor: pointer;
-    transition: transform 0.3s; /* Only transition for transform */
-    width: 250px; /* Adjust width to match image size */
-    height: 250px; /* Adjust height to match image size */
+    transition: transform 0.3s;
+    width: 200px;
+    height: 200px;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.choice-button.large {
+    margin: 20px 60px;
+    width: 150px;
+    height: 150px;
+    align-items: center;
+    flex-direction: column;
 }
 
 .choice-button:hover {
@@ -56,8 +79,8 @@ body {
 
 .choice-image {
     color: transparent;
-    width: 400px; /* Increase image size */
-    height: 400px; /* Increase image size */
+    width: 400px;
+    height: 400px;
     margin-bottom: 10px;
     object-fit: contain; /* Maintain original aspect ratio */
 }
@@ -68,26 +91,31 @@ body {
 }
 
 .see-more-results-button {
-    background-color: #28a745;
-    color: white;
+    position: fixed;
+    bottom: 120px;
+    left: 1200px;
+    width: 100px;
+    height: 100px;
+    background-image: url('images/7.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: transparent;
     border: none;
-    padding: 15px;
-    border-radius: 10px;
+    padding: 0;
     cursor: pointer;
-    transition: background-color 0.3s;
-    font-size: 1.2em;
-    margin-top: 20px;
+    transition: transform 0.3s;
+    color: transparent;
 }
 
 .see-more-results-button:hover {
-    background-color: #218838;
+    transform: scale(1.2);
 }
 
 .back-button {
-    position: relative;
-    /* bottom: 10px;
-    left: 10px; */
-    width: 80px; /* Adjust the width to fit your image */
+    position: fixed;
+    bottom: 50px;
+    left: 50px;
+    width: 80px;
     height: 80px;
     background-image: url('images/6.png');
     background-size: cover;
@@ -96,18 +124,18 @@ body {
     border: none;
     padding: 0;
     cursor: pointer;
-    transition: transform 0.3s; /* Add transition for transform */
-    color: transparent; /* Hide text color */
+    transition: transform 0.3s;
+    color: transparent;
 }
 
 .back-button:hover {
-    transform: scale(1.1); /* Scale up the image slightly */
+    transform: scale(1.2);
 }
 
 .ripple {
     position: absolute;
     border-radius: 50%;
-    border: 2px solid rgba(147, 191, 209, 0.5);
+    border: 4px solid rgba(147, 191, 209, 0.5);
     animation: ripple-effect 1.5s linear;
     transform: scale(0);
 }
@@ -127,11 +155,13 @@ body {
     position: absolute;
     border-radius: 50%;
     background: rgba(165, 203, 215, 0.5);
+    width: 15px;
+    height: 15px;
 }
 
 @keyframes bubble-effect-0 {
     0% {
-        transform: translateY(0) scale(0.5);
+        transform: translateY(0) scale(1);
         opacity: 1;
     }
     100% {
@@ -142,7 +172,7 @@ body {
 
 @keyframes bubble-effect-1 {
     0% {
-        transform: translateY(0) scale(0.5);
+        transform: translateY(0) scale(1);
         opacity: 1;
     }
     100% {
@@ -153,8 +183,7 @@ body {
 
 .rain-line {
     position: absolute;
-    width: 2px;
-    height: 30px;
+    width: 6px;
     background: rgba(158, 194, 208, 0.5);
     animation: fall 0.5s linear;
 }
@@ -162,10 +191,10 @@ body {
 @keyframes fall {
     0% {
         opacity: 1;
-        transform: translateY(-20px);
+        transform: translateY(-100vh); /* Start from above the viewport */
     }
     100% {
         opacity: 0;
-        transform: translateY(0);
+        transform: translateY(0); /* End at the original position */
     }
 }

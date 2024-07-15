@@ -7,7 +7,7 @@ export class WaveGroup {
         this.totalWaves = 3;
         this.totalPoints = 6;
 
-        this.color = ['rgba(83, 92, 145, 0.6)', 'rgba(27, 26, 85, 0.6)', 'rgba(7, 15, 43, 0.6)'];
+        this.color = ['rgba(218, 114, 151, 0.6)', 'rgba(255, 180, 194, 0.6)', 'rgba(102, 123, 198, 0.6)'];
 
         this.waves = [];
 
