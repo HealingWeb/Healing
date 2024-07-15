@@ -124,7 +124,7 @@ class App {
     fadeInQuestion() {
         const questionContainer = document.querySelector('.question-container');
         const colorPicker = document.querySelector('.color-picker');
-        const saveButton = document.querySelector('.save-button');
+        const saveButton = document.querySelector('.arrow-button');
 
         setTimeout(() => {
             questionContainer.style.opacity = 1;
@@ -199,7 +199,7 @@ class App {
     }
 
     setupSaveButton() {
-        const saveButton = document.querySelector('.save-button');
+        const saveButton = document.querySelector('.arrow-button');
         saveButton.addEventListener('click', this.saveColorData.bind(this));
     }
 
@@ -251,20 +251,24 @@ class App {
         // Fade out the question and color picker
         const questionContainer = document.querySelector('.question-container');
         const colorPicker = document.querySelector('.color-picker');
-        const saveButton = document.querySelector('.save-button');
+        const saveButton = document.querySelector('.arrow-button');
+        const blocksContainer = document.querySelector('.blocks-container');
     
         questionContainer.style.transition = 'opacity 1s';
         colorPicker.style.transition = 'opacity 1s';
         saveButton.style.transition = 'opacity 1s';
+        blocksContainer.style.transform = 'opacity 1s';
     
         questionContainer.style.opacity = 0;
         colorPicker.style.opacity = 0;
         saveButton.style.opacity = 0;
+        blocksContainer.style.opacity = 0;
     
         setTimeout(() => {
             questionContainer.style.display = 'none';
             colorPicker.style.display = 'none';
             saveButton.style.display = 'none';
+            blocksContainer.style.display = 'none';
     
             // Create or update the result card
             let resultCard = document.querySelector('.result-card');
@@ -279,25 +283,23 @@ class App {
             // Get the meanings for the top 3 colors
             const topColorsInfo = sortedGrades.slice(0, 3).map(([color, grade]) => {
                 const colorInfo = MOST_COLOR_MEANINGS[color];
-                return `<div><strong>${color}</strong>: ${grade.toFixed(2)}%<br>${colorInfo}</div>`;
-            }).join('<br>');
+                return `
+                <div style="margin-bottom: 10px;">
+                <div class="color-box" style="background-color: ${color};"></div>
+                    <strong style="font-family: 'BCcardB'; font-size: 25px; text-transform: capitalize;">${color}</strong>: 
+                    <span style="font-size: 20px; font-weight: bold;">${grade.toFixed(2)}%</span><br>
+                    <span style="font-family: 'BCcardL'; font-size: 16px;">${colorInfo}</span>
+                 </div>
+                `;
+            }).join('');
     
             resultCard.innerHTML = `
                 <h2>심리 분석 결과지</h2>
-                <pre id="color-data">${topColorsInfo}</pre>
+                <div id="color-data">${topColorsInfo}</div>
             `;
     
             // Show result card
             resultCard.style.opacity = 1;
-    
-            // Resize and move the pyramid (blocks container)
-            const blocksContainer = document.querySelector('.blocks-container');
-            blocksContainer.style.transition = 'all 1s';
-            blocksContainer.style.position = 'fixed';
-            blocksContainer.style.top = '10px'; // Position at the bottom
-            blocksContainer.style.right = '10px'; // Position at the right
-            blocksContainer.style.transform = 'scale(0.5)'; // Adjust the scale as needed
-            blocksContainer.style.transformOrigin = 'top right'; // Ensure scaling from bottom-right corner
     
             // Show "More Info" button
             const moreInfoButton = document.createElement('button');
