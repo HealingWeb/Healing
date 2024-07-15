@@ -6,9 +6,11 @@ body {
     height: 100vh;
     margin: 0;
     background-color: #f0f0f0;
+    position: relative; /* For ripple effect positioning */
 }
 
 .container {
+    position: relative; /* Ensure container is positioned relative for absolute positioning inside */
     background-color: white;
     padding: 20px;
     border-radius: 8px;
@@ -40,7 +42,7 @@ body {
     margin: 15px;
     border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s;
     width: 300px; /* Increase button width */
     display: flex;
     flex-direction: column;
@@ -49,6 +51,7 @@ body {
 
 .choice-button:hover {
     background-color: #0056b3;
+    transform: scale(1.05);
 }
 
 .choice-image {
@@ -81,4 +84,64 @@ body {
 .results-container p {
     font-size: 1.2em;
     margin: 10px 0;
+}
+
+.see-more-results-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 1.2em;
+    margin-top: 20px;
+}
+
+.see-more-results-button:hover {
+    background-color: #218838;
+}
+
+.back-button {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background-color: #ffc107;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 1.2em;
+}
+
+.back-button:hover {
+    background-color: #e0a800;
+}
+
+.ripple-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Allow clicks to pass through */
+    overflow: hidden;
+    z-index: 10;
+}
+
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(0, 0, 255, 0.5);
+    transform: scale(0);
+    animation: ripple-effect 1s linear;
+}
+
+@keyframes ripple-effect {
+    to {
+        transform: scale(20);
+        opacity: 0;
+    }
 }
