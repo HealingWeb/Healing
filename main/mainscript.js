@@ -280,48 +280,53 @@ class GlowParticle {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Pyramid page
     const pyramidContainer = document.getElementById('pyramid-container');
     const pyramid = document.getElementById('pyramid');
-    const centerText = document.getElementById('center-text');
-    const startButton = document.getElementById('start-button');
-    const rippleContainer = document.getElementById('ripple-container');
-    const transparentButton = document.getElementById('transparent-button');
+    const centerTextPyramid = document.getElementById('center-text-pyramid');
+    const startButtonPyramid = document.getElementById('start-button-pyramid');
 
     if (pyramidContainer) {
         pyramidContainer.addEventListener('click', () => {
             pyramidContainer.classList.add('clicked');
             pyramid.classList.add('hidden');
-            centerText.classList.remove('hidden');
-            startButton.classList.remove('hidden');
+            centerTextPyramid.classList.remove('hidden');
+            startButtonPyramid.classList.remove('hidden');
         });
 
-        centerText.addEventListener('click', () => {
-            centerText.classList.add('hidden');
-            startButton.classList.add('hidden');
+        centerTextPyramid.addEventListener('click', () => {
+            centerTextPyramid.classList.add('hidden');
+            startButtonPyramid.classList.add('hidden');
             pyramid.classList.remove('hidden');
         });
 
-        startButton.addEventListener('click', () => {
+        startButtonPyramid.addEventListener('click', () => {
             window.location.href = '/page1/page1.html';
         });
     }
+
+    // Ripple page
+    const rippleContainer = document.getElementById('ripple-container');
+    const transparentButton = document.getElementById('transparent-button');
+    const centerTextRipple = document.getElementById('center-text-ripple');
+    const startButtonRipple = document.getElementById('start-button-ripple');
 
     if (transparentButton) {
         transparentButton.addEventListener('click', () => {
             rippleContainer.classList.add('hidden');
             transparentButton.classList.add('hidden');
-            centerText.classList.remove('hidden');
-            startButton.classList.remove('hidden');
+            centerTextRipple.classList.remove('hidden');
+            startButtonRipple.classList.remove('hidden');
         });
 
-        centerText.addEventListener('click', () => {
-            centerText.classList.add('hidden');
-            startButton.classList.add('hidden');
+        centerTextRipple.addEventListener('click', () => {
+            centerTextRipple.classList.add('hidden');
+            startButtonRipple.classList.add('hidden');
             rippleContainer.classList.remove('hidden');
             transparentButton.classList.remove('hidden');
         });
 
-        startButton.addEventListener('click', () => {
+        startButtonRipple.addEventListener('click', () => {
             window.location.href = '/page2/page2.html';
         });
     }
