@@ -1,44 +1,44 @@
 const questions = [
     {
-        question: "나의 크기를 선택해주세요.",
+        question: "그림 속 나의 크기를 선택해주세요.",
         choices: [
-            { image: "images/1-1.png", result: "당신은 내향적인 성향을 지녔을 확률이 높습니다. 비교적 약한 자아상을 가지고 있습니다." },
-            { image: "images/1-2.png", result: "" },
-            { image: "images/1-3.png", result: "당신은 외향적인 성향을 지녔을 확률이 높습니다. 비교적 강한 자아상을 가지고 있습니다." }
+            { image: "images/1-1.png", title: "정서 및 상태:", result: "당신은 비교적 약한 자아상을 가지고 있으며<br>내향적인 성향을 지녔을 확률이 높습니다." },
+            { image: "images/1-2.png", title: "정서 및 상태:", result: "당신은 비교적 완만한 자아상을 가지고 있으며<br>조화로운 성향을 지니고 있습니다." },
+            { image: "images/1-3.png", title: "정서 및 상태:", result: "당신은 비교적 강한 자아상을 가지고 있으며<br>외향적인 성향을 지녔을 확률이 높습니다." }
         ]
     },
     {
-        question: "당신은 어느 곳을 바라보고 있나요?",
+        question: "나는 어느 곳을 바라보고 있나요?",
         choices: [
-            { image: "images/2-1.png", result: "당신은 스트레스 원인을 직접 마주하며 해결하려 노력하고 있습니다." },
-            { image: "images/2-2.png", result: "당신은 스트레스를 회피하려는 경향이 있습니다. 또한, 현재 우울감을 느끼고 있습니다." },
-            { image: "images/2-3.png", result: "당신은 스트레스를 겉으로는 받아들이는 척 하나, 속으로는 부정하고 있습니다." }
+            { image: "images/2-1.png", title: "스트레스를 마주하는 태도:", result: "당신은 스트레스 원인을 직접 마주하며 해결하려 노력하고 있습니다." },
+            { image: "images/2-2.png", title: "스트레스를 마주하는 태도:", result: "당신은 스트레스를 회피하려는 경향을 가지고 있으며<br>현재 우울감을 느끼고 있습니다." },
+            { image: "images/2-3.png", title: "스트레스를 마주하는 태도:", result: "당신은 스트레스를 겉으로는 받아들이는 척 하나,<br>속으로는 부정하고 있습니다." }
         ]
     },
     {
-        question: "구름의 모습을 선택해주세요.",
+        question: "구름의 양을 선택해주세요.",
         choices: [
-            { image: "images/3-1.png"},
-            { image: "images/3-2.png"},
-            { image: "images/3-3.png"}
+            { image: "images/3-1.png", title: "스트레스 강도:" },
+            { image: "images/3-2.png", title: "스트레스 강도:" },
+            { image: "images/3-3.png", title: "스트레스 강도:" }
         ]
     },
     {
-        question: "비 내리는 모습을 선택해주세요.",
+        question: "비의 양을 선택해주세요.",
         choices: [
-            { image: "images/4-1.png"},
-            { image: "images/4-2.png"},
-            { image: "images/4-3.png"}
+            { image: "images/4-1.png" },
+            { image: "images/4-2.png" },
+            { image: "images/4-3.png" }
         ]
     },
     {
-        question: "당신의 모습을 선택해주세요.",
+        question: "나의 모습을 선택해주세요.",
         choices: [
-            { image: "images/5-1.png", result: "당신은 스트레스에 대한 대처 방안을 지니고 있지 않습니다." },
-            { image: "images/5-2.png", result: "당신은 스트레스를 해소할 적절한 대처 방안을 지니고 있습니다." },
-            { image: "images/5-3.png", result: "당신은 스트레스를 해소할 적절한 대처 방안을 지니고 있습니다." },
-            { image: "images/5-4.png", result: "당신은 스트레스를 해소할 적절한 대처 방안을 지니고 있습니다. \n 다만 여기에 지나치게 큰 에너지를 소모하고 있을 가능성이 있습니다." },
-            { image: "images/5-5.png", result: "당신은 스트레스를 해소할 적절한 대처 방안을 지니고 있습니다. \n 다만 여기에 지나치게 큰 에너지를 소모하고 있을 가능성이 있습니다." }
+            { image: "images/5-1.png", title: "스트레스 상황 속 대처방식:", result: "당신은 스트레스에 대한 대처 방안을 지니고 있지 않습니다." },
+            { image: "images/5-2.png", title: "스트레스 상황 속 대처방식:", result: "당신은 스트레스를 해소할 적절한 대처 방안을 지니고 있습니다." },
+            { image: "images/5-3.png", title: "스트레스 상황 속 대처방식:", result: "당신은 스트레스를 해소할 적절한 대처 방안을 지니고 있습니다." },
+            { image: "images/5-4.png", title: "스트레스 상황 속 대처방식:", result: "당신은 스트레스를 해소할 적절한 대처 방안을 지니고 있습니다.<br>다만 여기에 지나치게 큰 에너지를 소모하고 있을 가능성이 있습니다." },
+            { image: "images/5-5.png", title: "스트레스 상황 속 대처방식:", result: "당신은 스트레스를 해소할 적절한 대처 방안을 지니고 있습니다.<br>다만 여기에 지나치게 큰 에너지를 소모하고 있을 가능성이 있습니다." }
         ]
     }
 ];
@@ -78,7 +78,6 @@ function showQuestion(index) {
     document.getElementById('back-button').disabled = index === 0;
 }
 
-
 function selectAnswer(questionIndex, choiceIndex) {
     answers[questionIndex] = choiceIndex;
 
@@ -98,14 +97,17 @@ function prevQuestion() {
 }
 
 function showResults() {
-    const results = [];
-    results.push(`${questions[0].choices[answers[0]].result}`); // Q1 result
-    results.push(`${questions[1].choices[answers[1]].result}`); // Q2 result
-
-    const pairResult = getPairResult(answers[2], answers[3]); // Q3 & Q4 result
-    results.push(`${pairResult}`);
-
-    results.push(`${questions[4].choices[answers[4]].result}`); // Q5 result
+    const results = questions.map((question, index) => {
+        if (index === 2) {
+            const pairResult = getPairResult(answers[2], answers[3]);
+            return `<strong>${questions[2].choices[answers[2]].title}</strong><br><span>${pairResult}</span>`;
+        }
+        if (index === 3) {
+            return ''; // Skip the 4th question since it's handled by the pair result
+        }
+        const choice = question.choices[answers[index]];
+        return choice.title ? `<strong>${choice.title}</strong><br><span>${choice.result}</span>` : `<span>${choice.result}</span>`;
+    }).filter(result => result !== '');
 
     localStorage.setItem('results', JSON.stringify(results));
     window.location.href = 'results.html';
@@ -137,9 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const results = JSON.parse(localStorage.getItem('results')) || [];
         const info = results.map(result => `
             <div style="margin-bottom: 10px;">
-                <strong style="font-family: 'BCcardB'; font-size: 20px;">
-                    ${result}
-                </strong>
+                ${result}
             </div>
         `).join('');
 
@@ -148,13 +148,12 @@ document.addEventListener('DOMContentLoaded', () => {
             <div id="result-data">${info}</div>
         `;
         resultsContainer.style.opacity = '1';
-
-        // Show the 'See More Results' button
-        //document.getElementById('see-more-results-button').style.display = 'block';
     } else {
         showQuestion(currentQuestionIndex);
     }
 });
+
+
 
 // Add ripple effect on click
 // Add ripple effect on click

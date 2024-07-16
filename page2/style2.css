@@ -5,9 +5,24 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: yellow;
+    background-color: #FDFFD2;
     position: relative; /* For ripple effect positioning */
     overflow: hidden;
+}
+
+#home-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-family: 'AukimExtraBold', sans-serif;
+    font-size: 1.5rem;
+    color: rgb(35, 35, 35);
+    text-decoration: none;
+    z-index: 1000; /* Ensure it is above other content */
+}
+
+#home-button:hover {
+    text-shadow: 0 0 10px rgba(35, 35, 35, 0.8);
 }
 
 @font-face {
@@ -54,7 +69,7 @@ body {
     background-color: transparent;
     border: none;
     padding: 0;
-    margin: 40px 80px;
+    margin: 40px 60px;
     cursor: pointer;
     transition: transform 0.3s;
     width: 200px;
@@ -115,6 +130,19 @@ body {
     margin-bottom: 10px;
 }
 
+.result-container strong {
+    color: #333;
+    font-family: 'BCcardB';
+    font-size: 25px;
+}
+
+.result-container span {
+    color: #333;
+    font-family: 'BCcardL';
+    font-size: 20px;
+    font-weight: normal;
+}
+
 .result-container .color-box {
     width: 20px;
     height: 20px;
@@ -124,20 +152,9 @@ body {
     border-radius: 5px;
 }
 
-.result-container strong {
-    color: #333;
-    font-family: 'AukimExtraBold';
-    font-size: 18px;
-}
-
-.result-container span {
-    font-size: 20px;
-    font-weight: bold;
-}
-
 #result-data {
     font-family: "BCcardL";
-    font-size: 16px;
+    font-size: 12px;
     line-height: 1.6;
     overflow-y: auto;
     max-height: 300px;
@@ -150,9 +167,9 @@ body {
 
 .see-more-results-button {
     position: fixed;
-    bottom: 0;
-    right: 0;
-    width: 100px;
+    bottom: 20px;
+    right:20px;
+    width: 140px;
     height: 100px;
     background-image: url('images/7.png');
     background-size: cover;
@@ -171,8 +188,8 @@ body {
 
 .back-button {
     position: fixed;
-    bottom: 0;
-    left: 0;
+    bottom: 20px;
+    left: 20px;
     width: 80px;
     height: 80px;
     background-image: url('images/6.png');
@@ -193,7 +210,7 @@ body {
 .ripple {
     position: absolute;
     border-radius: 50%;
-    border: 4px solid rgba(147, 191, 209, 0.5);
+    border: 4px solid rgba(147, 191, 209, 0.8);
     animation: ripple-effect 1.5s linear;
     transform: scale(0);
 }
@@ -212,7 +229,7 @@ body {
 .bubble {
     position: absolute;
     border-radius: 50%;
-    background: rgba(165, 203, 215, 0.5);
+    background: rgba(165, 203, 215, 0.8);
     width: 15px;
     height: 15px;
 }
@@ -242,7 +259,7 @@ body {
 .rain-line {
     position: absolute;
     width: 6px;
-    background: rgba(158, 194, 208, 0.5);
+    background: rgba(158, 194, 208, 0.8);
     animation: fall 0.5s linear;
 }
 
