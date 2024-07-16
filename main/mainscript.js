@@ -19,12 +19,18 @@ let particlesArray;
 const mouse = {
     x: null,
     y: null,
-    radius: 100
+    radius: 150
 };
 
 // Set canvas size
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
+
+canvas.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    mouse.x = event.clientX - rect.left;
+    mouse.y = event.clientY - rect.top;
+});
 
 class Particle {
     constructor(x, y, size, color, speedX, speedY) {
@@ -34,6 +40,8 @@ class Particle {
         this.color = color;
         this.speedX = speedX;
         this.speedY = speedY;
+        this.baseX = x;
+        this.baseY = y;
     }
 
     draw() {
@@ -49,20 +57,35 @@ class Particle {
     update() {
         this.x += this.speedX;
         this.y += this.speedY;
+
         if (this.x < 0 || this.x > canvas.width) {
             this.speedX = -this.speedX;
         }
         if (this.y < 0 || this.y > canvas.height) {
             this.speedY = -this.speedY;
         }
+
+        let dx = mouse.x - this.x;
+        let dy = mouse.y - this.y;
+        let distance = Math.sqrt(dx * dx + dy * dy);
+
+        if (distance < mouse.radius) {
+            let forceDirectionX = dx / distance;
+            let forceDirectionY = dy / distance;
+            let maxDistance = mouse.radius - this.size;
+            let force = (maxDistance - distance) / maxDistance;
+            let directionX = forceDirectionX * force * this.size;
+            let directionY = forceDirectionY * force * this.size;
+
+            this.x += directionX;
+            this.y += directionY;
+        }
+
         this.draw();
     }
-
-    applyForce(forceX, forceY) {
-        this.speedX += forceX;
-        this.speedY += forceY;
-    }
 }
+
+
 
 // Draw lines between particles
 function connectParticles() {
@@ -82,21 +105,6 @@ function connectParticles() {
                 ctx.stroke();
                 ctx.closePath();
             }
-        }
-
-        // Draw lines to mouse position
-        const mouseDx = particlesArray[a].x - mouse.x;
-        const mouseDy = particlesArray[a].y - mouse.y;
-        const mouseDistance = Math.sqrt(mouseDx * mouseDx + mouseDy * mouseDy);
-
-        if (mouseDistance < maxDistance) {
-            ctx.beginPath();
-            ctx.strokeStyle = 'rgba(255, 255, 255,' + (1 - mouseDistance / maxDistance) + ')';
-            ctx.lineWidth = 0.5;
-            ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-            ctx.lineTo(mouse.x, mouse.y);
-            ctx.stroke();
-            ctx.closePath();
         }
     }
 }
@@ -122,7 +130,6 @@ function init() {
 
 // Animation loop
 function animate() {
-    requestAnimationFrame(animate);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     particlesArray.forEach(particle => {
@@ -130,6 +137,7 @@ function animate() {
     });
 
     connectParticles();
+    requestAnimationFrame(animate);
 }
 
 // Initialize and start animation
@@ -155,7 +163,7 @@ canvas.addEventListener('click', (event) => {
         const distance = Math.sqrt(dx * dx + dy * dy);
 
         const forceRadius = 100; // Radius within which particles will be affected
-        const forceStrength = 0.05; // Strength of the force applied to particles
+        const forceStrength = 0.1; // Strength of the force applied to particles
 
         if (distance < forceRadius) {
             const forceDirectionX = dx / distance;
