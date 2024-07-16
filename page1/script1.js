@@ -18,14 +18,9 @@ let TOPCOLORS = [
 ];
 
 let COLORS = [ // colors of particles
-    { r: 224, g: 224, b: 224 }, // almost white
-    { r: 30, g: 180, b: 220 }, // light blue
-    { r: 180, g: 180, b: 180 }, // gray
-    // { r: 45, g: 74, b: 227 }, //blue
-    // { r: 250, g: 255, b: 89 }, //yellow
-    // { r: 255, g: 104, b: 248 }, //pink
-    // { r: 44, g: 209, b: 252 }, //cyan
-    //{ r: 54, g: 233, b: 84 }, //green
+    { r: 230, g: 230, b: 230 }, // almost white
+    { r: 204, g: 255, b: 255 }, // light blue
+    { r: 255, g: 204, b: 229 }, // gray
 ];
 
 const COLOR_MEANINGS = {

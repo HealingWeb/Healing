@@ -12,6 +12,21 @@ a {
     text-decoration: none;
 }
 
+#home-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-family: 'AukimExtraBold', sans-serif;
+    font-size: 1.5rem;
+    color: #232323;
+    text-decoration: none;
+    z-index: 1000; /* Ensure it is above other content */
+}
+
+#home-button:hover {
+    text-shadow: 0 0 10px #232323;
+}
+
 /* 전체 풀 스크린 레이아웃 */
 .wrap {
     width: 100%;

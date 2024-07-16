@@ -91,7 +91,7 @@ function connectParticles() {
 // Initialize particles
 function init() {
     particlesArray = [];
-    const numberOfParticles = 100;
+    const numberOfParticles = 150;
 
     for (let i = 0; i < numberOfParticles; i++) {
         const size = Math.random() * 5 + 1;
@@ -360,3 +360,13 @@ rippleContainerDiv.style.height = '100%';
 rippleContainerDiv.style.pointerEvents = 'none';
 rippleContainerDiv.style.overflow = 'hidden';
 document.body.appendChild(rippleContainerDiv);
+
+
+const transparentButton = document.getElementById('transparent-button');
+
+transparentButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    
+    const targetUrl = transparentButton.href;
+    window.location.href = targetUrl;
+});

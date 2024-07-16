@@ -22,6 +22,21 @@ canvas {
     z-index: -1; /* Ensure the canvas is behind other content */
 }
 
+#home-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-family: 'AukimExtraBold', sans-serif;
+    font-size: 1.5rem;
+    color: #fff;
+    text-decoration: none;
+    z-index: 1000; /* Ensure it is above other content */
+}
+
+#home-button:hover {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
 .section {
     position: relative;
     z-index: 1;
@@ -105,13 +120,13 @@ p {
 }
 
 .next-section {
-    background-color: #222;
+    background-color: #111;
     padding: 100px;
     text-align: center;
 }
 
 .next-section h2 {
-    font-size: 2.5rem;
+    font-size: 3rem;
     position: absolute;
     top: 80px;
     left: 50%;
@@ -140,7 +155,7 @@ p {
 }
 
 .third-content {
-    background-color: #333;
+    background-color: #111;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -150,7 +165,7 @@ p {
 }
 
 .third-content h2 {
-    font-size: 2.5rem;
+    font-size: 3rem;
     position: absolute;
     top: 80px;
     font-family: 'BCcardB', sans-serif;
@@ -168,7 +183,7 @@ p {
 
 .ripple-container {
     position: absolute;
-    top: 50%;
+    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
@@ -308,4 +323,17 @@ p {
     transform: rotateX(90deg) translateZ(-150px);
     filter: blur(20px);
     box-shadow: 0px 0px 500px var(--light-green);
+}
+
+#transparent-button {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px;
+    height: 250px;
+    border: none; /* No border */
+    z-index: 1001; /* Ensure it's above other content */
+    cursor: pointer;
+    background: transparent; /* Make it fully transparent */
 }
