@@ -245,10 +245,10 @@ canvas{
 }
 
 .more-info-button {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    width: 100px;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 140px;
     height: 100px;
     background-image: url('img/moreResult.png');
     background-size: cover;
