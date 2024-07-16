@@ -271,16 +271,57 @@ class GlowParticle {
     }
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    const pyramidContainer = document.getElementById('pyramid-container');
+    const pyramid = document.getElementById('pyramid');
+    const centerText = document.getElementById('center-text');
+    const startButton = document.getElementById('start-button');
+    const rippleContainer = document.getElementById('ripple-container');
+    const transparentButton = document.getElementById('transparent-button');
+
+    if (pyramidContainer) {
+        pyramidContainer.addEventListener('click', () => {
+            pyramidContainer.classList.add('clicked');
+            pyramid.classList.add('hidden');
+            centerText.classList.remove('hidden');
+            startButton.classList.remove('hidden');
+        });
+
+        centerText.addEventListener('click', () => {
+            centerText.classList.add('hidden');
+            startButton.classList.add('hidden');
+            pyramid.classList.remove('hidden');
+        });
+
+        startButton.addEventListener('click', () => {
+            window.location.href = '/page1/page1.html';
+        });
+    }
+
+    if (transparentButton) {
+        transparentButton.addEventListener('click', () => {
+            rippleContainer.classList.add('hidden');
+            transparentButton.classList.add('hidden');
+            centerText.classList.remove('hidden');
+            startButton.classList.remove('hidden');
+        });
+
+        centerText.addEventListener('click', () => {
+            centerText.classList.add('hidden');
+            startButton.classList.add('hidden');
+            rippleContainer.classList.remove('hidden');
+            transparentButton.classList.remove('hidden');
+        });
+
+        startButton.addEventListener('click', () => {
+            window.location.href = '/page2/page2.html';
+        });
+    }
+});
+
+
 const pyramidLink = document.querySelector('.pyramid-link');
 
-pyramidLink.addEventListener('click', (event) => {
-    // Prevent default link behavior
-    event.preventDefault();
-    
-    // Navigate to the target page
-    const targetUrl = event.currentTarget.href;
-    window.location.href = targetUrl;
-});
 
 function createRipple(x, y) {
     const rippleContainer = document.getElementById('ripple-container'); // Ensure this is correct
@@ -373,11 +414,3 @@ rippleContainerDiv.style.pointerEvents = 'none';
 rippleContainerDiv.style.overflow = 'hidden';
 document.body.appendChild(rippleContainerDiv);
 
-const transparentButton = document.getElementById('transparent-button');
-
-transparentButton.addEventListener('click', (event) => {
-    event.preventDefault();
-    
-    const targetUrl = transparentButton.href;
-    window.location.href = targetUrl;
-});
