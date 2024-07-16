@@ -1,3 +1,30 @@
+function setupBackgroundMusic() {
+    const audioElement = document.getElementById('background-music');
+    if (audioElement) {
+        const savedTime = localStorage.getItem('audioTime');
+        if (savedTime) {
+            audioElement.currentTime = parseFloat(savedTime);
+        }
+
+        // Add a click event listener to start playing the audio
+        document.body.addEventListener('click', () => {
+            audioElement.play();
+        }, { once: true });
+
+        window.addEventListener('beforeunload', () => {
+            localStorage.setItem('audioTime', audioElement.currentTime);
+        });
+    }
+}
+
+document.addEventListener('DOMContentLoaded', setupBackgroundMusic);
+
+
+document.addEventListener('DOMContentLoaded', setupBackgroundMusic);
+
+
+document.addEventListener('DOMContentLoaded', setupBackgroundMusic);
+
 const questions = [
     {
         question: "그림 속 나의 크기를 선택해주세요.",
@@ -182,10 +209,10 @@ function createRipple(x, y) {
         ripple.className = 'ripple';
         ripple.style.left = `${x}px`; // Center ripple
         ripple.style.top = `${y}px`; // Center ripple
-        ripple.style.width = `${50 * (i + 0.5)}px`; // Increase size of each ripple
-        ripple.style.height = `${25 * (i + 0.5)}px`; // Make the ripple an oval shape
-        ripple.style.marginLeft = `-${25 * (i + 0.5)}px`; // Adjust to center the ripple horizontally
-        ripple.style.marginTop = `-${12 * (i + 0.5)}px`; // Adjust to center the ripple vertically
+        ripple.style.width = `${50 * (i + 0.7)}px`; // Increase size of each ripple
+        ripple.style.height = `${25 * (i + 0.7)}px`; // Make the ripple an oval shape
+        ripple.style.marginLeft = `-${25 * (i + 0.7)}px`; // Adjust to center the ripple horizontally
+        ripple.style.marginTop = `-${12 * (i + 0.7)}px`; // Adjust to center the ripple vertically
         ripple.style.animationDelay = `${i * 0.3}s`; // Delay each ripple slightly
         rippleContainer.appendChild(ripple);
 
@@ -201,9 +228,9 @@ function createRipple(x, y) {
         bubble.style.left = `${x}px`;
         bubble.style.top = `${y}px`;
         bubble.style.animation = `bubble-effect-${i} 1.5s ease-in`;
-        bubble.style.animationDelay = `${i * 0.5}s`;
-        bubble.style.width = '5px';
-        bubble.style.height = '5px';
+        bubble.style.animationDelay = `${i * 0.7}s`;
+        bubble.style.width = '10px';
+        bubble.style.height = '10px';
         bubble.style.marginLeft = '-7px'; // Adjust to center the bubble horizontally
         bubble.style.marginTop = '-7px'; // Adjust to center the bubble vertically
         bubble.style.borderRadius = '50%';
@@ -224,7 +251,7 @@ function generateRandomEffects() {
         const x = Math.random() * width;
         const y = height - Math.random() * height * (2/3);
         createRipple(x, y);
-    }, 800); // Adjust interval time (in milliseconds) as needed
+    }, 500); // Adjust interval time (in milliseconds) as needed
 }
 
 // Start generating random effects after the window has loaded

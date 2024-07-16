@@ -259,17 +259,17 @@ body {
 .rain-line {
     position: absolute;
     width: 6px;
-    background: rgba(158, 194, 208, 0.8);
-    animation: fall 0.5s linear;
+    background: linear-gradient(to bottom, rgba(158, 194, 208, 0.5), rgba(158, 194, 208, 0.9));
+    animation: fall 0.7s linear;
 }
 
 @keyframes fall {
     0% {
         opacity: 1;
-        transform: translateY(-100vh); /* Start from above the viewport */
+        transform: translateY(-100vh);
     }
     100% {
         opacity: 0;
-        transform: translateY(0); /* End at the original position */
+        transform: translateY(0);
     }
 }
