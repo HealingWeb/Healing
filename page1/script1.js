@@ -122,15 +122,15 @@ class App {
                     block.style.opacity = 1;
                 }, index * 100); // Delay each block slightly for a staggered effect
             });
-        }, 1500); // Delay before the blocks appear
+        }, 1000); // Delay before the blocks appear
 
         setTimeout(() => {
             colorPicker.style.opacity = 1;
-        }, 2000); // Delay before the color picker appears
+        }, 1000); // Delay before the color picker appears
 
         setTimeout(() => {
             saveButton.style.opacity = 1;
-        }, 2500); // Delay before the save button appears
+        }, 1000); // Delay before the save button appears
     }
 
     addDragAndDrop() {
