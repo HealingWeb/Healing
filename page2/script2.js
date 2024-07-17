@@ -1,30 +1,3 @@
-function setupBackgroundMusic() {
-    const audioElement = document.getElementById('background-music');
-    if (audioElement) {
-        const savedTime = localStorage.getItem('audioTime');
-        if (savedTime) {
-            audioElement.currentTime = parseFloat(savedTime);
-        }
-
-        // Add a click event listener to start playing the audio
-        document.body.addEventListener('click', () => {
-            audioElement.play();
-        }, { once: true });
-
-        window.addEventListener('beforeunload', () => {
-            localStorage.setItem('audioTime', audioElement.currentTime);
-        });
-    }
-}
-
-document.addEventListener('DOMContentLoaded', setupBackgroundMusic);
-
-
-document.addEventListener('DOMContentLoaded', setupBackgroundMusic);
-
-
-document.addEventListener('DOMContentLoaded', setupBackgroundMusic);
-
 const questions = [
     {
         question: "그림 속 나의 크기를 선택해주세요.",
