@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>스와이프 갤러리</title>
+	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+	<link rel="stylesheet" href="colorcards2.css">	
+	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+</head>
+<body>	
+	<a href="/main/mainIndex.html" id="home-button">OASIS</a>
+	<div class="wrap">
+		<h1>PITR <span>RESULT CARDS</span></h1>
+
+		<ul class="auto">
+			<li class="btnStart"><i class="fas fa-play"></i></li>
+			<li class="btnStop"><i class="fas fa-pause"></i></li>
+		</ul>
+
+<div class="swiper-wrapper">
+	<div class="swiper-slide red">
+		<div class="inner">
+			<div class="con">
+				<h2>정서와 상태</h2>
+				<p1>사람의 크기, 방향, 그림 속 사람의 위치</p1>
+				<div class="inner-box">
+					<p>그림 속 사람은 자신의 자화상이라고 볼 수 있습니다.<br><br>
+						나의 모습을 크게 그릴수록 외향적이고, 더 강한 자아상을 지니고 있다는 걸 보여줍니다.<br>
+						반대로 나의 모습을 작게 그릴수록 내향적이고, 약한 자아상을 지니고 있다는 걸 보여줍니다.<br><br>
+						내가 바라보고 있는 방향은 내가 스트레스를 어떻게 받아들이고 있는지 보여줍니다.<br>
+						내가 정면을 바라보고 있다면 스트레스를 마주하고 있다는 것을,<br>
+						측면을 바라보고 있다면 스트레스를 회피하려 한다는 것을,<br>
+						후면을 바라보고 있다면 겉으로는 받아들이는 척 하나 속으로는 부정하고 있다는 것을 보여줍니다.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="swiper-slide orange">
+		<div class="inner">
+			<div class="con">
+				<h2>스트레스의 상징</h2>
+				<p1>구름, 웅덩이, 번개</p1>
+				<div class="inner-box">
+					<p>하늘에 낀 구름의 양과 내리는 비의 양은 내가 현재 받고있는 스트레스의 강도를 보여줍니다.<br><br>
+					많은 양의 비나 심한 먹구름은 스트레스의 강도가 높다는 것을 나타냅니다.<br>
+					반면 적은 양의 비나 먹구름은 스트레스의 강도가 낮다는 것을 나타냅니다.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="swiper-slide yellow">
+		<div class="inner">
+			<div class="con">
+				<h2>스트레스 대처기제(보호물)</h2>
+				<p1>우산, 비옷, 장화, 기타 보호물</p1>
+				<div class="inner-box">
+					<p>비를 피하기 위한 도구를 얼마나 많이 갖고 있느냐를 통해 자신이 이겨내고 있는지, 이겨낼 의지가 있는지 확인할 수 있습니다.<br><br>
+						아무 것도 없이 비를 직접 맞고 있는 모습은 스트레스를 대처할 의지가 없는 무기력한 상태라고 볼 수 있습니다.<br><br>
+						반면, 우산이나 장화 등으로 비를 피하는 모습은 스트레스를 대처할 적절한 방안이 있다는 것을 보여줍니다.<br>
+						다만 나무나 지붕과 같이 자신보다 월등히 큰 사물로 비를 피하는 모습은 <br>
+						스트레스 대처를 위해 지나치게 큰 에너지를 소모하고 있을 가능성을 지닙니다.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	</div>
+
+	<script>
+		const swiper = new Swiper('.wrap',{	
+			direction: "horizontal",
+			loop: true,						
+			pagination: {
+				el: '.swiper-pagination',
+				type: 'fraction'
+			},	
+			navigation : {				
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',			
+			},
+			spaceBetween: 0,
+			slidesPerView: "auto",
+			grabCursor: true,
+			centeredSlides :true,
+			speed:1000,
+			effect:"coverflow",	
+			coverflowEffect: {
+				rotate: 50,
+				stretch: -100,
+				depth: 400,
+				modifier: 1,
+				slideShadows: false,
+			},
+			autoplay: {
+				delay:1000,		
+				disableOnInteraction : true
+			}	
+		});
+
+		// .btnStart 요소를 찾아서 btnStart에 저장
+		const btnStart = document.querySelector(".btnStart");
+		// .btnStop 요소를 찾아서 btnStop에 저장
+		const btnStop = document.querySelector(".btnStop");
+
+		//btnStart버튼을 클릭시 자동롤링 시작
+		btnStart.addEventListener("click",()=>{
+			swiper.autoplay.start();
+		});
+
+		//btnStart버튼을 클릭시 자동롤링 정지
+		btnStop.addEventListener("click",()=>{
+			swiper.autoplay.stop();
+		});
+	</script>	
+</body>
+</html>
