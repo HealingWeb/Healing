@@ -126,10 +126,10 @@ function connectParticles() {
 // Initialize particles
 function init() {
     particlesArray = [];
-    const numberOfParticles = 250;
+    const numberOfParticles = 150;
 
     for (let i = 0; i < numberOfParticles; i++) {
-        const size = Math.random() * 6 + 1;
+        const size = Math.random() * 5 + 1;
         const x = Math.random() * (canvas.width - size * 2) + size;
         const y = Math.random() * (canvas.height - size * 2) + size;
         const speedX = (Math.random() - 0.5) * 3;
