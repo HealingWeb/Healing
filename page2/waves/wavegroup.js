@@ -1,6 +1,6 @@
 import {
     Wave
-} from './wave.js'
+} from '/Healing/page2/waves/wave.js'
 
 export class WaveGroup {
     constructor() {

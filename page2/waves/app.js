@@ -1,6 +1,6 @@
 import {
     WaveGroup
-} from './wavegroup.js'
+} from '/Healing/page2/waves/wavegroup.js'
 
 class App {
     constructor() {

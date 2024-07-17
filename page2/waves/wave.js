@@ -1,6 +1,6 @@
 import {
     Point
-} from './point.js'
+} from '/Healing/page2/waves/point.js'
 
 export class Wave {
     constructor(index, totalPoints, color) {

@@ -1,4 +1,4 @@
-import { GlowParticle } from "./glowparticle.js";
+import { GlowParticle } from "/Healing/page1/glowparticle.js";
 
 const COLOR_PICKER = [
     { name: 'red', rgb: { r: 255, g: 0, b: 0 } },
