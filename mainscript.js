@@ -29,7 +29,19 @@ canvas.addEventListener('mousemove', (event) => {
     const rect = canvas.getBoundingClientRect();
     mouse.x = event.clientX - rect.left;
     mouse.y = event.clientY - rect.top;
+    insideCanvas: false;
 });
+
+canvas.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    mouse.x = event.clientX - rect.left;
+    mouse.y = event.clientY - rect.top;
+    mouse.insideCanvas = true; // mouse 가 canvas 안에 있으면 true
+});
+
+canvas.addEventListener('mouseleave', () => {
+    mouse.insideCanvas = false;
+})
 
 class Particle {
     constructor(x, y, size, color, speedX, speedY) {
@@ -64,23 +76,28 @@ class Particle {
             this.speedY = -this.speedY;
         }
 
-        let dx = mouse.x - this.x;
-        let dy = mouse.y - this.y;
-        let distance = Math.sqrt(dx * dx + dy * dy);
+        if (mouse.insideCanvas){
+            let dx = mouse.x - this.x;
+            let dy = mouse.y - this.y;
+            let distance = Math.sqrt(dx * dx + dy * dy);
 
-        if (distance < mouse.radius) {
-            let forceDirectionX = dx / distance;
-            let forceDirectionY = dy / distance;
-            let maxDistance = mouse.radius - this.size;
-            let force = (maxDistance - distance) / maxDistance;
-            let directionX = forceDirectionX * force * this.size;
-            let directionY = forceDirectionY * force * this.size;
+            if (distance < mouse.radius) {
+                let forceDirectionX = dx / distance;
+                let forceDirectionY = dy / distance;
+                let maxDistance = mouse.radius - this.size;
+                let force = (maxDistance - distance) / maxDistance;
+                let directionX = forceDirectionX * force * this.size;
+                let directionY = forceDirectionY * force * this.size;
 
-            this.x += directionX;
-            this.y += directionY;
+                this.x += directionX;
+                this.y += directionY;
+            }
         }
-
         this.draw();
+    }
+    applyForce(forceX, forceY){
+        this.speedX += forceX;
+        this.speedY += forceY;
     }
 }
 

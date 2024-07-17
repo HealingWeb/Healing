@@ -27,7 +27,7 @@ canvas {
     top: 20px;
     left: 20px;
     font-family: 'AukimExtraBold', sans-serif;
-    font-size: 1.5rem;
+    font-size: 2vw;
     color: #fff;
     text-decoration: none;
     z-index: 1000; /* Ensure it is above other content */
@@ -97,8 +97,9 @@ canvas {
 }
 
 h1 {
+    position: absolute;
     font-family: 'AukimExtraBold', sans-serif;
-    font-size: 3rem;
+    font-size: 3vw;
     margin-bottom: 20px;
     animation: scale-up 3s ease-in-out forwards;
 }
@@ -109,13 +110,13 @@ h1 {
     left: 50%;
     transform: translateX(-50%);
     font-family: 'BCcardB', sans-serif;
-    font-size: 1.2rem; /* Adjust the font size as needed */
+    font-size: 1.2vw; /* Adjust the font size as needed */
     text-align: center;
     color: #fff;
 }
 
 p {
-    font-size: 1.2rem;
+    font-size: 1.2vw;
     margin-bottom: 40px;
 }
 
@@ -127,7 +128,7 @@ p {
 }
 
 .next-section h2 {
-    font-size: 3rem;
+    font-size: 3vw;
     position: absolute;
     top: 80px;
     left: 50%;
@@ -167,7 +168,7 @@ p {
 }
 
 .third-content h2 {
-    font-size: 3rem;
+    font-size: 3vw;
     position: absolute;
     top: 80px;
     font-family: 'BCcardB', sans-serif;
@@ -179,7 +180,7 @@ p {
 
 .third-content p {
     font-family: 'BCcardL', sans-serif;
-    font-size: 1.2rem;
+    font-size: 1.2vw;
     margin-bottom: 40px;
 }
 
@@ -354,7 +355,7 @@ p {
     left: 50%;
     transform: translate(-50%, -50%);
     font-family:"BCcardL";
-    font-size: 24px;
+    font-size: 1.8vw;
     text-align: center;
     cursor: pointer;
     width: 480px;
@@ -380,7 +381,7 @@ p {
 }
 
 .test-method {
-    font-size: 30px; /* Adjust the font size as needed */
+    font-size: 2.2vw; /* Adjust the font size as needed */
     font-family: BCcardB;
     font-weight: bold; /* Optional: make the text bold */
     color: #fff; /* Optional: adjust the text color */
