@@ -260,7 +260,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         startButtonPyramid.addEventListener('click', () => {
-            window.location.href = '/page1/page1.html';
+            window.location.href = '/Healing/page1/page1.html';
         });
     }
 
@@ -302,7 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         startButtonRipple.addEventListener('click', () => {
-            window.location.href = '/page2/page2.html';
+            window.location.href = '/Healing/page2/page2.html';
         });
     }
 });
