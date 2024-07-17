@@ -1,6 +1,5 @@
 const canvas = document.getElementById('background');
 const ctx = canvas.getContext('2d');
-console.log(canvas, ctx); // to check if canvas and ctx are valid
 
 window.addEventListener('load', () => {
     const enterSound = document.getElementById('enter-sound');
@@ -48,7 +47,7 @@ class Particle {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fillStyle = this.color;
-        ctx.shadowBlur = 15; // blur
+        ctx.shadowBlur = 15;
         ctx.shadowColor = this.color;
         ctx.fill();
         ctx.shadowBlur = 0;
@@ -84,8 +83,6 @@ class Particle {
         this.draw();
     }
 }
-
-
 
 // Draw lines between particles
 function connectParticles() {
@@ -124,11 +121,8 @@ function init() {
 
         particlesArray.push(new Particle(x, y, size, color, speedX, speedY));
     }
-
-    console.log(particlesArray); // to check if particlesArray is populated
 }
 
-// Animation loop
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -162,8 +156,8 @@ canvas.addEventListener('click', (event) => {
         const dy = particle.y - mouseY;
         const distance = Math.sqrt(dx * dx + dy * dy);
 
-        const forceRadius = 100; // Radius within which particles will be affected
-        const forceStrength = 0.1; // Strength of the force applied to particles
+        const forceRadius = 100;
+        const forceStrength = 0.075;
 
         if (distance < forceRadius) {
             const forceDirectionX = dx / distance;
@@ -189,7 +183,7 @@ function scrollToSection(index) {
     sections[index].scrollIntoView({ behavior: 'smooth' });
     setTimeout(() => {
         isAnimating = false;
-    }, 1000); // Adjust as needed to match animation duration
+    }, 1000);
 }
 
 // Scroll down button click event
@@ -227,9 +221,8 @@ window.addEventListener('wheel', (event) => {
     }
 });
 
-
 // 3D Pyramid Code
-const PI2 = Math.PI * 2; // constant of circle in radians
+const PI2 = Math.PI * 2;
 
 class GlowParticle {
     constructor(x, y, radius, rgb) {
