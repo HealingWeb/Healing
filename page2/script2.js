@@ -110,7 +110,7 @@ function showResults() {
     }).filter(result => result !== '');
 
     localStorage.setItem('results', JSON.stringify(results));
-    window.location.href = 'Healing/page2/results.html';
+    window.location.href = 'results.html';
 }
 
 function getPairResult(answer3, answer4) {
@@ -130,7 +130,7 @@ function getPairResult(answer3, answer4) {
 }
 
 function seeMoreResults() {
-    window.location.href = 'Healing/page2/colorcards2.html';
+    window.location.href = 'colorcards2.html';
 }
 
 document.addEventListener('DOMContentLoaded', () => {
