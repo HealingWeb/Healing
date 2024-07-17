@@ -289,15 +289,29 @@ document.addEventListener('DOMContentLoaded', () => {
     if (pyramidContainer) {
         pyramidContainer.addEventListener('click', () => {
             pyramidContainer.classList.add('clicked');
-            pyramid.classList.add('hidden');
-            centerTextPyramid.classList.remove('hidden');
-            startButtonPyramid.classList.remove('hidden');
+            //pyramid.classList.add('fade-out');
+            setTimeout(() => {
+                centerTextPyramid.classList.remove('hidden');
+                centerTextPyramid.classList.add('fade-in');
+                startButtonPyramid.classList.add('fade-in');    
+                startButtonPyramid.classList.remove('hidden');    
+                pyramid.classList.add('hidden');
+                //pyramid.classList.remove('fade-out');
+            }, 500);
         });
 
         centerTextPyramid.addEventListener('click', () => {
-            centerTextPyramid.classList.add('hidden');
-            startButtonPyramid.classList.add('hidden');
-            pyramid.classList.remove('hidden');
+            centerTextPyramid.classList.add('fade-out');
+            startButtonPyramid.classList.add('fade-out');
+            setTimeout(() => {
+                centerTextPyramid.classList.add('hidden');
+                startButtonPyramid.classList.add('hidden');
+                centerTextPyramid.classList.remove('fade-out');
+                startButtonPyramid.classList.remove('fade-out');
+                //pyramid.classList.add('fade-in');
+                pyramid.classList.remove('hidden');
+            }, 500);
+            
         });
 
         startButtonPyramid.addEventListener('click', () => {
@@ -313,17 +327,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (transparentButton) {
         transparentButton.addEventListener('click', () => {
-            rippleContainer.classList.add('hidden');
-            transparentButton.classList.add('hidden');
-            centerTextRipple.classList.remove('hidden');
-            startButtonRipple.classList.remove('hidden');
+            rippleContainer.classList.add('clicked');
+            transparentButton.classList.remove('fade-out');
+            setTimeout(() => {
+                transparentButton.classList.add('hidden');
+                transparentButton.classList.remove('fade-out');
+                rippleContainer.classList.add('hidden');
+                rippleContainer.classList.remove('fade-out');
+                centerTextRipple.classList.add('fade-in');
+                centerTextRipple.classList.remove('hidden');
+                startButtonRipple.classList.add('fade-in');
+                startButtonRipple.classList.remove('hidden');
+            }, 500);
         });
 
         centerTextRipple.addEventListener('click', () => {
-            centerTextRipple.classList.add('hidden');
-            startButtonRipple.classList.add('hidden');
-            rippleContainer.classList.remove('hidden');
-            transparentButton.classList.remove('hidden');
+            centerTextRipple.classList.add('fade-out');
+            startButtonRipple.classList.add('fade-out');
+            setTimeout(() => {
+                centerTextRipple.classList.add('hidden');
+                startButtonRipple.classList.add('hidden');
+                centerTextRipple.classList.remove('fade-out');
+                startButtonRipple.classList.remove('fade-out');
+                rippleContainer.classList.add('fade-in');
+                rippleContainer.classList.remove('hidden');
+                transparentButton.classList.add('fade-in');
+                transparentButton.classList.remove('hidden');
+            }, 500);
         });
 
         startButtonRipple.addEventListener('click', () => {

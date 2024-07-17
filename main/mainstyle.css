@@ -289,6 +289,7 @@ p {
     height: 200px;
     transform-style: preserve-3d;
     animation: animate 15s linear infinite;
+    z-index: 1001;
 }
 @keyframes animate {
     0%{
@@ -387,10 +388,15 @@ p {
 
 .fade-in {
     opacity: 1;
-    transition: opacity 0.5s ease-in; /* Adjust the duration as needed */
+    transition: opacity 1s ease-in; /* Adjust the duration as needed */
 }
 
 .fade-out {
     opacity: 0;
-    transition: opacity 0.5s ease-out; /* Adjust the duration as needed */
+    transition: opacity 1s ease-out; /* Adjust the duration as needed */
+}
+
+.hidden {
+    display: none;
+    opacity: 0;
 }
